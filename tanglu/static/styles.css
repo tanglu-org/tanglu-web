@@ -1,0 +1,184 @@
+/**
+ * Tanglu Website's Stylesheets
+ * @author: Éverton Arruda <root@earruda.eti.br>
+ **/
+
+/**
+ * GENERAL
+ */
+nav, header, footer {
+    display: block;
+}
+
+body {
+    font-family: Helvetica, Arial, Sans;
+    margin: 40px 0px 0px;
+    background-color: #555;
+}
+
+.container {
+    clear: both;
+    display: table;
+    width: 960px;
+    margin: 0px auto;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+a, a:visited {
+    color: #08c;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #005580;
+}
+
+/**
+ * TOP MENU
+ */
+#top-menu {
+    position: fixed;
+    width: 100%;
+    line-height: 20px;
+    background-color: #333;
+    top: 0px;
+    left: 0px;
+    overflow: visible;
+    z-index: 1030;
+}
+
+#top-menu ul {
+    display: table;
+    padding: 0px;
+    margin: 0px;
+}
+
+#top-menu ul li {
+    display: table-cell;
+    list-style: none;
+    line-height: 39px;
+}
+
+#top-menu ul li:hover {
+    background-color: #111;
+}
+
+#top-menu a,
+#top-menu a:visited {
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+#top-menu a:hover {
+    background-color: #111;
+    text-decoration: none;
+}
+
+#top-menu a:active {
+    background-color: #222;
+}
+
+#top-menu #brand {
+    line-height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #666;
+    text-shadow: 1px 1px 2px #111;
+}
+
+/**
+ * HEADER
+ */
+header {
+    padding: 40px 0px;
+    background-color: steelblue;
+    width: 100%;
+    position: relative;
+    box-shadow: 0px 3px 5px 3px #aaa;
+}
+
+header h1 {
+    color: #fff;
+    font-family: Arial;
+    font-size: 60px;
+    margin: 0px;
+}
+
+header h2 {
+    color: #444;
+    margin: 0px;
+}
+
+/**
+ * MAIN CONTENT
+ */
+#main-content {
+    background-color: #fff;
+    padding: 30px 0px;
+}
+
+#main-content h2 {
+    color: #333;
+    font-size: 30px;
+}
+
+/**
+ * SPONSORS
+ */
+#sponsors {
+    padding: 10px 0px;
+    background-color: lightgrey;
+    color: #aaa;
+    line-height: 60px;
+}
+
+#sponsors img {
+    margin: 0px 10px;
+}
+
+/**
+ * FOOTER
+ */
+footer {
+    box-shadow: 0px 10px 10px -6px #333 inset;
+}
+
+footer a,
+footer a:visited {
+    color: #fff;
+}
+
+footer a:hover {
+    color: #ddd;
+}
+
+footer .box {
+    width: 310px;
+    margin: 5px;
+}
+
+footer .box h2 {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+}
+
+footer .box ul {
+    margin: 0px;
+    padding: 0px 0px 0px 10px;
+}
+
+footer .box ul li {
+    margin: 3px;
+    list-style-position: inside;
+    list-style-type: circle;
+}

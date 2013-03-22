@@ -1,0 +1,96 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Tanglu- Made for You</title>
+        <link rel="stylesheet" href="{{ STATIC_URL }}styles.css"/>
+    </head>
+
+    <body>
+        <nav id="top-menu">
+            <div class="container">
+                <ul class="pull-left">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Get it</a></li>
+                    <li><a href="#">Contribute</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Planet</a></li>
+                </ul>
+
+                <div id="brand" class="pull-right">
+                    Tanglu
+                </div> <!-- brand -->
+            </div> <!-- container -->
+        </nav>
+
+        <header>
+            <div class="container">
+                <h1>Tanglu</h1>
+                <h2>Made for You</h2>
+            </div> <!-- container -->
+        </header>
+
+        <div id="main-content">
+            <div class="container">
+                <h2>Welcome to the Tanglu website</h2>
+                <p>Tanglu is a new GNU/Linux distribution based on Debian, designed for human beings.</p>
+                <p>Read the <a href="http://blog.tenstral.net/2013/03/tanglu.html">initial announcement</a>.</p>
+                <p>If you want to get in contact, check out <a href="http://webchat.freenode.net/?channels=tanglu-devel">#tanglu-devel</a> on Freenode.</p>
+                <p>You can also subscribe to one of our <a href="http://lists.tanglu.org/mailman/listinfo">mailinglists</a>.</p>
+
+                <p>{{ message }}</p>
+            </div> <!-- container -->
+        </div> <!-- middle-content -->
+
+        <div id="sponsors">
+            <div class="container">
+                <div class="pull-left">
+                    &copy; 2013 The Tanglu Contributors
+                </div>
+
+                <div class="pull-right">
+                    <a href="http://gnu.org"><img class="pull-left" src="{{ STATIC_URL }}img/gnu.png"/></a>
+                    <a href="http://linuxfoundation.org"><img class="pull-left" src="{{ STATIC_URL }}img/tux.png"/></a>
+                    <a href="http://debian.org"><img class="pull-left" src="{{ STATIC_URL }}img/debian-swirl.png"/></a>
+                    Powered by Debian
+                </div>
+            </div> <!-- container -->
+        </div> <!-- sponsors -->
+
+        <footer>
+            <div class="container">
+                <div class="box pull-left">
+                    <h2>RSS Planet Tanglu</h2>
+                    <ul>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                    </ul>
+                </div>
+
+                <div class="box pull-left">
+                    <h2>Latest News</h2>
+                    <ul>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                    </ul>
+                </div>
+
+                <div class="box pull-left">
+                    <h2>Planet Feed</h2>
+                    <ul>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                        <li><a href="#">This could be a link or a text block</a></li>
+                    </ul>
+                </div>
+            </div> <!-- container -->
+        </footer>
+    </body>
+</html>
