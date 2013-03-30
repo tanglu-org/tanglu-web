@@ -1,13 +1,16 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <title>Tanglu- Made for You</title>
+        {% block site_title %}
+        <title>Tanglu - Made for You</title>
+        {% endblock site_title %}
         <link rel="stylesheet" href="{{ STATIC_URL }}styles.css"/>
     </head>
 
     <body>
         <nav id="top-menu">
             <div class="container">
+                {% block top_menu %}
                 <ul class="pull-left">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Get it</a></li>
@@ -15,6 +18,7 @@
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Planet</a></li>
                 </ul>
+                {% endblock top_menu %}
 
                 <div id="brand" class="pull-right">
                     Tanglu
@@ -24,27 +28,30 @@
 
         <header>
             <div class="container">
+                {% block header %}
                 <h1>Tanglu</h1>
                 <h2>Made for You</h2>
+                {% endblock header %}
             </div> <!-- container -->
         </header>
 
         <div id="main-content">
             <div class="container">
+                {% block main_content %}
                 <h2>Welcome to the Tanglu website</h2>
                 <p>Tanglu is a new GNU/Linux distribution based on Debian, designed for human beings.</p>
                 <p>Read the <a href="http://blog.tenstral.net/2013/03/tanglu.html">initial announcement</a>.</p>
                 <p>If you want to get in contact, check out <a href="http://webchat.freenode.net/?channels=tanglu-devel">#tanglu-devel</a> on Freenode.</p>
                 <p>You can also subscribe to one of our <a href="http://lists.tanglu.org/mailman/listinfo">mailinglists</a>.</p>
-
-                <p>{{ message }}</p>
+                {% endblock main_content %}
             </div> <!-- container -->
         </div> <!-- middle-content -->
 
         <div id="sponsors">
             <div class="container">
+                {% block sponsors %}
                 <div class="pull-left">
-                    &copy; 2013 The Tanglu Contributors
+                    &copy; 2013 The Tanglu Contributors"
                 </div>
 
                 <div class="pull-right">
@@ -53,12 +60,14 @@
                     <a href="http://debian.org"><img class="pull-left" src="{{ STATIC_URL }}img/debian-swirl.png"/></a>
                     Powered by Debian
                 </div>
+                {% endblock sponsors %}
             </div> <!-- container -->
         </div> <!-- sponsors -->
 
         <footer>
             <div class="container">
                 <div class="box pull-left">
+                    {% block footer_box_left %}
                     <h2>RSS Planet Tanglu</h2>
                     <ul>
                         <li><a href="#">This could be a link or a text block</a></li>
@@ -67,9 +76,11 @@
                         <li><a href="#">This could be a link or a text block</a></li>
                         <li><a href="#">This could be a link or a text block</a></li>
                     </ul>
+                    {% endblock footer_box_left %}
                 </div>
 
                 <div class="box pull-left">
+                    {% block footer_box_middle %}
                     <h2>Latest News</h2>
                     <ul>
                         <li><a href="#">This could be a link or a text block</a></li>
@@ -78,9 +89,11 @@
                         <li><a href="#">This could be a link or a text block</a></li>
                         <li><a href="#">This could be a link or a text block</a></li>
                     </ul>
+                    {% endblock footer_box_middle %}
                 </div>
 
                 <div class="box pull-left">
+                    {% block footer_box_right %}
                     <h2>Planet Feed</h2>
                     <ul>
                         <li><a href="#">This could be a link or a text block</a></li>
@@ -89,6 +102,7 @@
                         <li><a href="#">This could be a link or a text block</a></li>
                         <li><a href="#">This could be a link or a text block</a></li>
                     </ul>
+                    {% endblock footer_box_right %}
                 </div>
             </div> <!-- container -->
         </footer>

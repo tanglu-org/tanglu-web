@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h2>{{ welcome }}</h2>
+    <p>{{ line1 }}</p>
+    <p>{{ line2|safe }}</p>
+    <p>{{ line3|safe }}</p>
+    <p>{{ line4|safe }}</p>
+{% endblock main_content %}
