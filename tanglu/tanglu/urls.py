@@ -8,6 +8,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'tanglu.views.index', name='index'),
+    url(r'^download$', 'tanglu.views.download', name='download'),
     # url(r'^tanglu/', include('tanglu.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -17,4 +18,5 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
 )
 
+# Added to make static files work in dev environment
 urlpatterns += staticfiles_urlpatterns()

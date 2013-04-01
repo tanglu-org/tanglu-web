@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext, Context, loader
 
+# Home page View
 def index(request):
     sentences = {
         'welcome': 'Welcome to the Tanglu website',
@@ -10,5 +11,15 @@ def index(request):
         'line4': 'You can also subscribe to one of our <a href="http://lists.tanglu.org/mailman/listinfo">mailinglists</a>.',
     }
     template = loader.get_template('home.html')
+    context = RequestContext(request, sentences)
+    return HttpResponse(template.render(context))
+
+# Download View
+def download(request):
+    sentences = {
+        'title1': 'Sorry! We are still in the womb, yet to be born :D',
+        'line1': 'But wait! You can help, check it out the <a href="contribute">contribute section</a>!',
+    }
+    template = loader.get_template('download.html')
     context = RequestContext(request, sentences)
     return HttpResponse(template.render(context))
