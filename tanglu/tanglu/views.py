@@ -18,3 +18,9 @@ def contribute(request):
     template = loader.get_template('contribute.html')
     context = RequestContext(request, {})
     return HttpResponse(template.render(context))
+
+# FAQ View
+def faq(request):
+    template = loader.get_template('faq.html')
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))

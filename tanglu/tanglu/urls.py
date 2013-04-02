@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^$', 'tanglu.views.index', name='index'),
     url(r'^download$', 'tanglu.views.download', name='download'),
     url(r'^contribute$', 'tanglu.views.contribute', name='contribute'),
+    url(r'^faq$', 'tanglu.views.faq', name='faq'),
     # url(r'^tanglu/', include('tanglu.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
