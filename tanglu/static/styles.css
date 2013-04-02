@@ -126,8 +126,13 @@ header h2 {
     padding: 30px 0px;
 }
 
-#main-content h2 {
+#main-content h2,
+#main-content h3,
+#main-content h4 {
     color: #333;
+}
+
+#main-content h2 {
     font-size: 30px;
 }
 
