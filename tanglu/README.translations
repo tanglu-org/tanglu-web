@@ -1,0 +1,28 @@
+STARTING A NEW LANGUAGE TRANSLATION
+-----------------------------------
+If you want to start a new language translation, feel free to do so.
+
+In order to begin you must create the .po file with the strings to be translated,
+and there are two ways in which you can do it:
+
+1 - Generating the .po files:
+
+    Run the following command:
+
+        $ python manage.py makemessages -l <ll_CC>
+
+    Where <ll_CC> is the locale code for the language you want, like: pt, for Portuguese, or
+    pt_BR, for Brazilian Portuguese.
+
+    The .po file will be generated inside the locale/<ll_CC>/LC_MESSAGES/ directory,
+    under the name django.po
+
+2 - Copying an existing translation:
+
+    Enter the locale/ directory and run the following command:
+
+        $ cp -r pt_BR <ll_CC>
+
+    Then translate the django.po file inside the locale/<ll_CC>/LC_MESSAGES/ directory.
+
+It is a good practice to send your translated file for someone to review it.

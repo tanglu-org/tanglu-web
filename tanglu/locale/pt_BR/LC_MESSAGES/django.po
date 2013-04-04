@@ -1,0 +1,59 @@
+# Translation for the Brazilian Portuguese language.
+# Copyright (C) 2013
+# This file is distributed under the same license as the Tanglu Website package.
+# Éverton Arruda <root@earruda.eti.br>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-05 12:26-0500\n"
+"PO-Revision-Date: 2013-04-03 13:49-0400\n"
+"Last-Translator: Éverton Arruda <root@earruda.eti.br>\n"
+"Language-Team: Tanglu pt_BR l10n Team\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: tanglu/settings.py:12
+msgid "English"
+msgstr "Inglês"
+
+#: tanglu/settings.py:13
+msgid "Portuguese (Brazil)"
+msgstr "Português (Brasil)"
+
+#: tanglu/templates/home.html:6
+msgid "Welcome to the Tanglu website"
+msgstr "Bem vindo ao site do Tanglu"
+
+#: templates/base.html:8 templates/base.html.py:42
+msgid "Made for You"
+msgstr "Feito para Você"
+
+#. Translators: Menu item title
+#: templates/base.html:19
+msgid "Home"
+msgstr "Início"
+
+#. Translators: Menu item title
+#: templates/base.html:21
+msgid "Get it"
+msgstr "Baixe"
+
+#. Translators: Menu item title
+#: templates/base.html:23
+msgid "Contribute"
+msgstr "Contribua"
+
+#. Translators: Menu item title
+#: templates/base.html:25
+msgid "FAQ"
+msgstr "FAQ"
+
+#. Translators: Menu item title
+#: templates/base.html:27
+msgid "Planet"
+msgstr "Planeta"

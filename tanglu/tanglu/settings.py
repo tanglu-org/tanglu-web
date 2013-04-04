@@ -1,7 +1,22 @@
+# -*- coding: utf-8 -*-
 # Django settings for tanglu project.
 import os
 
+# A dummy ugettext, for i18n purposes
+ugettext = lambda s: s
+
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+# Available Translation
+LANGUAGES = (
+    ('en', 'English'),
+    ('es', 'Spanish'),
+    ('pt-br', 'Brazilian Portuguese'),
+)
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_ROOT, 'locale'),
+)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -13,14 +28,14 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': {
-        #'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        #'NAME': 'tanglu',                      # Or path to database file if using sqlite3.
-        #'USER': '',                      # Not used with sqlite3.
-        #'PASSWORD': '',                  # Not used with sqlite3.
-        #'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        #'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+    #    'NAME': 'tanglu',                      # Or path to database file if using sqlite3.
+    #    'USER': 'everton',                      # Not used with sqlite3.
+    #    'PASSWORD': 'everton',                  # Not used with sqlite3.
+    #    'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+    #    'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    #}
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -96,8 +111,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

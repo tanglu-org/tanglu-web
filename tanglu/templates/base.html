@@ -1,10 +1,14 @@
+{% load i18n %}
+{% get_available_languages as languages %}
+
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
         {% block site_title %}
-        <title>Tanglu - Made for You</title>
+        <title>Tanglu - {% trans "Made for You" %}</title>
         {% endblock site_title %}
         <link rel="stylesheet" href="{{ STATIC_URL }}styles.css"/>
+        <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/png"/>
     </head>
 
     <body>
@@ -12,11 +16,16 @@
             <div class="container">
                 {% block top_menu %}
                 <ul class="pull-left">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'download' %}">Get it</a></li>
-                    <li><a href="{% url 'contribute' %}">Contribute</a></li>
-                    <li><a href="{% url 'faq' %}">FAQ</a></li>
-                    <li><a href="http://planet.tanglu.org">Planet</a></li>
+                    {# Translators: Menu item title #}
+                    <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+                    {# Translators: Menu item title #}
+                    <li><a href="{% url 'download' %}">{% trans "Get it" %}</a></li>
+                    {# Translators: Menu item title #}
+                    <li><a href="{% url 'contribute' %}">{% trans "Contribute" %}</a></li>
+                    {# Translators: Menu item title #}
+                    <li><a href="{% url 'faq' %}">{% trans "FAQ" %}</a></li>
+                    {# Translators: Menu item title #}
+                    <li><a href="http://planet.tanglu.org">{% trans "Planet" %}</a></li>
                     <li><a href="http://wiki.tanglu.org">Wiki</a></li>
                 </ul>
                 {% endblock top_menu %}
@@ -29,10 +38,29 @@
 
         <header>
             <div class="container">
-                {% block header %}
-                <h1>Tanglu</h1>
-                <h2>Made for You</h2>
-                {% endblock header %}
+                <img id="logo" src="{{ STATIC_URL }}img/tanglu-logo-white-glow.png"/>
+
+                <div class="pull-left">
+                    {% block header %}
+                    <h1>Tanglu</h1>
+                    <h2>{% trans "Made for You" %}</h2>
+                    {% endblock header %}
+                </div>
+
+                <div id="translations" class="pull-right">
+                    <ul>
+                        <li>
+                            <a href="#">{% trans "Languages" %}</a>
+                            <ul>
+                                {% for lang_code, lang_name in languages %}
+                                    {% language lang_code %}
+                                        <li><a href="{% url 'index' %}">{{ lang_name }}</a></li>
+                                    {% endlanguage %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div> <!-- container -->
         </header>
 
@@ -52,7 +80,7 @@
             <div class="container">
                 {% block sponsors %}
                 <div class="pull-left">
-                    &copy; 2013 The Tanglu Contributors"
+                    &copy; 2013 The Tanglu Contributors
                 </div>
 
                 <div class="pull-right">

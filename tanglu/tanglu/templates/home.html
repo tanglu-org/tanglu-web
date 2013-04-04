@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block main_content %}
-    <h2>Welcome to the Tanglu website</h2>
+    <h2>{% trans "Welcome to the Tanglu website" %}</h2>
     <p>Tanglu is a new GNU/Linux distribution based on Debian, designed for human beings.</p>
     <p>Read the <a href="http://blog.tenstral.net/2013/03/tanglu.html">initial announcement</a>.</p>
     <p>If you want to get in contact, check out <a href="http://webchat.freenode.net/?channels=tanglu-devel">#tanglu-devel</a> on Freenode.</p>
