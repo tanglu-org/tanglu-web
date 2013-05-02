@@ -1,35 +1,40 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block main_content %}
-    <h2>You can contribute on the following ways:</h2>
-    <h3>With time.</h3>
-    <p>Time is the most expensive resource, if you are talented and have time to help out, here is a list of what we need:</p>
+    <h2>{% trans "You can contribute on the following ways:" %}</h2>
+    <h3>{% trans "With time." %}</h3>
+    <p>{% trans "Time is the most expensive resource, if you are talented and have time to help out, here is a list of what we need:" %}</p>
     <ul>
-        <li>Translating this site, software, manuals or upstream projects.</li></li>
-        <li>Designing wallpapers, bootup logos, this website.</li>
-        <li>Promoting our project by writing articles about it.</li>
-        <li>Ensuring documentation on our website doesn't get out of date.</li>
-        <li>Testing the software and be willing to help out on further tests to ensure we can fix the issues.</li>
-        <li>Documenting procedures on the wiki, including screenshots if it makes for easier understanding</li>
-        <li>Help with website and infrastructure administration.</li>
-        <li>Help creating packages.</li>
+        <li>{% trans "Translating this site, software, manuals or upstream projects." %}</li>
+        <li>{% trans "Designing wallpapers, bootup logos, this website." %}</li>
+        <li>{% trans "Promoting our project by writing articles about it." %}</li>
+        <li>{% trans "Ensuring documentation on our website doesn't get out of date." %}</li>
+        <li>{% trans "Testing the software and be willing to help out on further tests to ensure we can fix the issues." %}</li>
+        <li>{% trans "Documenting procedures on the wiki, including screenshots if it makes for easier understanding" %}</li>
+        <li>{% trans "Help with website and infrastructure administration." %}</li>
+        <li>{% trans "Help creating packages." %}</li>
     </ul>
 
-    <h3>With servers.</h3>
-    <p>We need lots of infrastructure, since we are no rolling-release distribution and will have to provide a full Debian archive copy, as well as the required infrastructure to generate diffs for merging changes and for building packages.</p>
+    <h3>{% trans "With servers." %}</h3>
+    <p>{% trans "We need lots of infrastructure, since we are no rolling-release distribution and will have to provide a full Debian archive copy, as well as the required infrastructure to generate diffs for merging changes and for building packages." %}</p>
     <ul>
-        <li>If you have a server which just idles at time, we would happily use it as buildd for package building.</li>
-        <li>Also, other services like the package queue, bugtracker, merge system etc. need capacity.</li>
-        <li>If you want, you could also provide an archive mirror.</li>
+        <li>{% trans "If you have a server which just idles at time, we would happily use it as buildd for package building." %}</li>
+        <li>{% trans "Also, other services like the package queue, bugtracker, merge system etc. need capacity." %}</li>
+        <li>{% trans "If you want, you could also provide an archive mirror." %}</li>
     </ul>
 
-    <h3>With donations.</h3>
-    <p>Do you like the project but don't have time to contribute back?</p>
+    <h3>{% trans "With donations." %}</h3>
+    <p>{% trans "Do you like the project but don't have time to contribute back?" %}</p>
     <ul>
-        <li>As soon as the project has the minimum required to start running we will be accepting donations.</li>
-        <li>Companies will also be able to sponsor the project.</li>
+        <li>{% trans "As soon as the project has the minimum required to start running we will be accepting donations." %}</li>
+        <li>{% trans "Companies will also be able to sponsor the project." %}</li>
     </ul>
 
-    <p>To get in touch with us, check out <a href="http://webchat.freenode.net/?channels=tanglu-devel">#tanglu-devel</a> on Freenode.</p>
-    <p>Or you can also subscribe to our <a href="http://lists.tanglu.org/mailman/listinfo/tanglu-devel">development mailinglist.</a>.</p>
+    <p>
+        {% blocktrans with devs_channel="<a href='http://webchat.freenode.net/?channels=tanglu-devel'>#tanglu_devel</a>" %}To get in touch with us, check out {{ devs_channel }} on Freenode.{% endblocktrans %}
+    </p>
+    <p>
+        {% blocktrans with link_1="<a href='http://lists.tanglu.org/mailman/listinfo'>" link_2="</a>" %}Or you can also subscribe to our {{ link_1 }} development mailinglist {{ link_2 }}.{% endblocktrans %}</p>
 {% endblock main_content %}

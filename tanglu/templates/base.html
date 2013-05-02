@@ -38,12 +38,12 @@
 
         <header>
             <div class="container">
-                <img id="logo" src="{{ STATIC_URL }}img/tanglu-logo-white-glow.png"/>
+                <img id="logo" src="{{ STATIC_URL }}img/tanglu-logo-white-glow.png" alt="Tanglu Logo"/>
 
                 <div class="pull-left">
                     {% block header %}
                     <h1>Tanglu</h1>
-                    <h2>{% trans "Made for You" %}</h2>
+                    <h2>{% trans "Made for YOU" %}</h2>
                     {% endblock header %}
                 </div>
 
@@ -67,11 +67,20 @@
         <div id="main-content">
             <div class="container">
                 {% block main_content %}
-                <h2>Welcome to the Tanglu website</h2>
-                <p>Tanglu is a new GNU/Linux distribution based on Debian, designed for human beings.</p>
-                <p>Read the <a href="http://blog.tenstral.net/2013/03/tanglu.html">initial announcement</a>.</p>
-                <p>If you want to get in contact, check out <a href="http://webchat.freenode.net/?channels=tanglu-devel">#tanglu-devel</a> on Freenode.</p>
-                <p>You can also subscribe to one of our <a href="http://lists.tanglu.org/mailman/listinfo">mailinglists</a>.</p>
+                <h2>{% trans "Welcome to the Tanglu website" %}</h2>
+                <p>{% trans "A new GNU/Linux distribution based on Debian, designed for human beings." %}</p>
+                <p>
+                    {# Translators: %(name)s are variables. Do not translate. #}
+                    {% blocktrans with link_1="<a href='http://blog.tenstral.net/2013/03/tanglu.html'>" link_2="</a>" %}Read the {{ link_1 }} initial announcement {{ link_2 }}.{% endblocktrans %}
+                </p>
+                <p>
+                    {# Translators: %(name)s are variables. Do not translate. #}
+                    {% blocktrans with users_channel="<a href='http://webchat.freenode.net/?channels=tanglu'>#tanglu</a>" devs_channel="<a href='http://webchat.freenode.net/?channels=tanglu-devel'>#tanglu-devel</a>" %}If you want to get in contact, check out ther user's channel {{ users_channel }} on Freenode (discussion about Tanglu development is happening at {{ devs_channel }}).{% endblocktrans %}
+                </p>
+                <p>
+                    {# Translators: %(name)s are variables. Do not translate. #}
+                    {% blocktrans with link_1="<a href='http://lists.tanglu.org/mailman/listinfo'>" link_2="</a>" %}You can also subscribe to one of our {{ link_1 }} mailinglists {{ link_2 }}, bigger announcements will be posted to the low-volume tanglu-announce mailinglist.{% endblocktrans %}
+                </p>
                 {% endblock main_content %}
             </div> <!-- container -->
         </div> <!-- middle-content -->
