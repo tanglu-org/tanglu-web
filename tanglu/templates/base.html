@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load tanglu_extras %}
+
 {% get_available_languages as languages %}
 
 <html lang="en">
@@ -106,14 +108,17 @@
             <div class="container">
                 <div class="box pull-left">
                     {% block footer_box_left %}
-                    <h2>RSS Planet Tanglu</h2>
-                    <ul>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                    </ul>
+                    {% feed "http://planet.tanglu.org/rss20.xml" as feedData %}
+                    <h2>{{ feedData.title }}</h2>
+                    {% if feedData.hasEntries %}
+                        <ul>
+                            {% for entry in feedData.entries %}
+                                <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        The feed was empty.
+                    {% endif %}
                     {% endblock footer_box_left %}
                 </div>
 
