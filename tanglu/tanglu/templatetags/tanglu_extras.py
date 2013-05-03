@@ -35,6 +35,7 @@ def feed(feedLocation):
     feed.link = feedData.feed.link
 
     # Append the entries to the Feed object
+    feed.entries = []
     for entry in feedData.entries:
         if maxEntries == 0:
             break
