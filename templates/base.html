@@ -6,67 +6,89 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block site_title %}
         <title>Tanglu - {% trans "Made for You" %}</title>
         {% endblock site_title %}
-        <link rel="stylesheet" href="{{ STATIC_URL }}styles.css"/>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css"/>
         <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/png"/>
     </head>
 
     <body>
-        <nav id="top-menu">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                {% block top_menu %}
-                <ul class="pull-left">
-                    {# Translators: Menu item title #}
-                    <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
-                    {# Translators: Menu item title #}
-                    <li><a href="{% url 'download' %}">{% trans "Get it" %}</a></li>
-                    {# Translators: Menu item title #}
-                    <li><a href="{% url 'contribute' %}">{% trans "Contribute" %}</a></li>
-                    {# Translators: Menu item title #}
-                    <li><a href="{% url 'faq' %}">{% trans "FAQ" %}</a></li>
-                    {# Translators: Menu item title #}
-                    <li><a href="http://planet.tanglu.org">{% trans "Planet" %}</a></li>
-                    <li><a href="http://wiki.tanglu.org">Wiki</a></li>
-                </ul>
-                {% endblock top_menu %}
-
-                <div id="brand" class="pull-right">
-                    Tanglu
-                </div> <!-- brand -->
-            </div> <!-- container -->
-        </nav>
-
-        <header>
-            <div class="container">
-                <img id="logo" src="{{ STATIC_URL }}img/tanglu-logo-white-glow.png" alt="Tanglu Logo"/>
-
-                <div class="pull-left">
-                    {% block header %}
-                    <h1>Tanglu</h1>
-                    <h2>{% trans "Made for YOU" %}</h2>
-                    {% endblock header %}
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"
+                            data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="{{ STATIC_URL }}img/tanglu-logo.png"/> Tanglu
+                    </a>
                 </div>
 
-                <div id="translations" class="pull-right">
-                    <ul>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    {% block top_menu %}
+                    <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">{% trans "Languages" %} &#x25BE;</a>
-                            <ul>
+                            {# Translators: Menu item title #}
+                            <a href="{% url 'index' %}">{% trans "Home" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="{% url 'download' %}">{% trans "Get it" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="{% url 'contribute' %}">{% trans "Contribute" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="{% url 'faq' %}">{% trans "FAQ" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="http://planet.tanglu.org">{% trans "Planet" %}</a>
+                        </li>
+                        <li>
+                            <a href="http://wiki.tanglu.org">Wiki</a>
+                        </li>
+                        <li class="dropdown">
+                            <!--<a href="#">{% trans "Languages" %} &#x25BE;</a>-->
+                            {# Translators: Menu item title #}
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                               href="#">
+                                {#{% trans "Languages" %}#}
+                                <span class="glyphicon glyphicon-flag"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
                                 {% for lang_code, lang_name in languages %}
                                     {% language lang_code %}
-                                        <li><a href="{% url 'index' %}">{{ lang_name }}</a></li>
+                                        <li>
+                                            <a href="{% url 'index' %}">{{ lang_name }}</a>
+                                        </li>
                                     {% endlanguage %}
                                 {% endfor %}
                             </ul>
                         </li>
                     </ul>
-                </div>
-            </div> <!-- container -->
+                    {% endblock top_menu %}
+                </div><!-- /.navbar-collapse -->
+          </div><!-- /.container -->
+        </nav>
+
+        <header class="section">
+            <!-- Displays the banner as background image -->
         </header>
 
-        <div id="main-content">
+        <div id="main-content" class="section">
             <div class="container">
                 {% block main_content %}
                 <h2>{% trans "Welcome to the Tanglu website" %}</h2>
@@ -87,67 +109,78 @@
             </div> <!-- container -->
         </div> <!-- middle-content -->
 
-        <div id="sponsors">
+        {% block boxgroup %}
+        <div class="boxgroup section">
             <div class="container">
-                {% block sponsors %}
-                <div class="pull-left">
-                    &copy; 2013 The Tanglu Contributors
-                </div>
+                <div class="row-fluid">
+                    <div class="col-lg-4">
+                        {% block boxgroup_box_left %}
+                        {% feed "http://planet.tanglu.org/rss20.xml" as feedData %}
+                        <h2>{{ feedData.title }}</h2>
+                        {% if feedData.hasEntries %}
+                            <ul>
+                                {% for entry in feedData.entries %}
+                                    <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            The feed was empty.
+                        {% endif %}
+                        {% endblock boxgroup_box_left %}
+                    </div>
 
-                <div class="pull-right">
-                    <a href="http://gnu.org"><img class="pull-left" src="{{ STATIC_URL }}img/gnu.png"/></a>
-                    <a href="http://linuxfoundation.org"><img class="pull-left" src="{{ STATIC_URL }}img/tux.png"/></a>
-                    <a href="http://debian.org"><img class="pull-left" src="{{ STATIC_URL }}img/debian-swirl.png"/></a>
-                    Powered by Debian
+                    <div class="col-lg-4">
+                        {% block boxgroup_box_center %}
+                        <h2>Latest News</h2>
+                        <ul>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                        </ul>
+                        {% endblock boxgroup_box_center %}
+                    </div>
+
+                    <div class="col-lg-4">
+                        {% block boxgroup_box_right %}
+                        <h2>Planet Feed</h2>
+                        <ul>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                        </ul>
+                        {% endblock boxgroup_box_right %}
+                    </div>
                 </div>
-                {% endblock sponsors %}
             </div> <!-- container -->
         </div> <!-- sponsors -->
+        {% endblock boxgroup %}
 
-        <footer>
+        <footer class="section">
             <div class="container">
-                <div class="box pull-left">
-                    {% block footer_box_left %}
-                    {% feed "http://planet.tanglu.org/rss20.xml" as feedData %}
-                    <h2>{{ feedData.title }}</h2>
-                    {% if feedData.hasEntries %}
-                        <ul>
-                            {% for entry in feedData.entries %}
-                                <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        The feed was empty.
-                    {% endif %}
-                    {% endblock footer_box_left %}
-                </div>
+                <div class="row-fluid">
+                    {% block footer %}
+                    <div class="col-lg-6">
+                        &copy; 2013 The Tanglu Contributors
+                        <img src="{{ STATIC_URL }}img/tanglu-logo-gray-60px.png"/>
+                    </div>
 
-                <div class="box pull-left">
-                    {% block footer_box_middle %}
-                    <h2>Latest News</h2>
-                    <ul>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                    </ul>
-                    {% endblock footer_box_middle %}
-                </div>
-
-                <div class="box pull-left">
-                    {% block footer_box_right %}
-                    <h2>Planet Feed</h2>
-                    <ul>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                        <li><a href="#">This could be a link or a text block</a></li>
-                    </ul>
-                    {% endblock footer_box_right %}
+                    <div class="col-lg-6 text-right">
+                        <a href="http://debian.org">
+                            <img src="{{ STATIC_URL }}img/debian-swirl.png"/>
+                        </a>
+                        Powered by Debian GNU/Linux
+                    </div>
+                    {% endblock footer %}
                 </div>
             </div> <!-- container -->
         </footer>
+
+        <!-- Javascript files -->
+        <script src="{{ STATIC_URL }}js/jquery-2.0.3.min.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     </body>
 </html>

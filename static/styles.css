@@ -55,9 +55,41 @@ nav, header, footer {
 
 body {
     font-family: "cantarell", Helvetica, Arial, Sans;
-    margin: 40px 0px 0px;
-    background-color: #555;
+    background-color: #fff;
+    padding-top: 62px;
 }
+
+/* OVERRIDES */
+header {
+    background-color: #999;
+    height: 400px;
+    background-image: url(../img/banner-bg.png);
+    background-attachment: fixed;
+    background-size: auto;
+    background-position: center top;
+}
+
+.navbar {
+    background-color: #fff;
+    background-image: none;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    padding: 3px 0px;
+}
+
+.navbar-brand img {
+    width: 55px;
+}
+
+.navbar-nav > li > a,
+.navbar-nav > li > a:hover {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* OLD
 
 .container {
     clear: both;
@@ -86,7 +118,7 @@ a:hover {
 
 /**
  * TOP MENU
- */
+ * /
 #top-menu {
     position: fixed;
     width: 100%;
@@ -148,7 +180,7 @@ a:hover {
 
 /**
  * HEADER
- */
+ * /
 header {
     padding: 40px 0px;
     background-color: steelblue;
@@ -175,7 +207,7 @@ header #logo {
     margin-right: 20px;
 }
 
-/* Translations menu */
+/* Translations menu * /
 #translations {
     position: relative;
 }
@@ -235,7 +267,7 @@ header #logo {
     white-space: nowrap;
 }
 
-#translations ul ul li { 
+#translations ul ul li {
     float: none;
     display: block;
     text-align: left;
@@ -254,11 +286,11 @@ header #logo {
     font-weight: normal;
 }
 
-/* End translations */
+/* End translations * /
 
 /**
  * MAIN CONTENT
- */
+ * /
 #main-content {
     background-color: #fff;
     padding: 30px 0px;
@@ -280,7 +312,7 @@ header #logo {
 
 /**
  * SPONSORS
- */
+ * /
 #sponsors {
     padding: 10px 0px;
     background-color: lightgrey;
@@ -294,7 +326,7 @@ header #logo {
 
 /**
  * FOOTER
- */
+ * /
 footer {
     box-shadow: 0px 10px 10px -6px #333 inset;
 }
@@ -329,3 +361,4 @@ footer .box ul li {
     list-style-position: inside;
     list-style-type: circle;
 }
+*/
