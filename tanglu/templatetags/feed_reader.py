@@ -22,6 +22,7 @@ class Feed:
 
 def feed(feedLocation):
     maxEntries = 5
+
     # Parse the feed XML
     feedData = feedparser.parse(feedLocation)
 
@@ -29,27 +30,44 @@ def feed(feedLocation):
     feed = Feed()
 
     # Check the HTTP status. If not 200, return a default Feed object
-    try:
-        if feedData.status != 200:
-            return Feed()
+    if feedData.status != 200:
+        return Feed()
 
+    try:
         # Set feed title and link attributes
         feed.title = feedData.feed.title
         feed.link = feedData.feed.link
 
-        # Append the entries to the Feed object
         feed.entries = []
-        for entry in feedData.entries:
-            if maxEntries == 0:
-                break
 
-            feed.entries.append({
-                'title': entry.title,
-                'link': entry.link,
-                'published': entry.published,
-            })
+        if feedData.version == "rss20":
+            # Append the entries to the Feed object
+            for entry in feedData.entries:
+                if maxEntries == 0:
+                    break
 
-            maxEntries -= 1
+                feed.entries.append({
+                    'title': entry.title,
+                    'link': entry.link,
+                    'published': entry.published,
+                })
+
+                maxEntries -= 1
+        elif feedData.version == "rss10":
+            # Append the entries to the Feed object
+            for entry in feedData.entries:
+                if maxEntries == 0:
+                    break
+
+                print entry
+
+                feed.entries.append({
+                    'title': entry.title,
+                    'link': entry.link,
+                    'published': "",
+                })
+
+                maxEntries -= 1
 
         # Set hasEntries to True in Feed object
         if feed.entries:

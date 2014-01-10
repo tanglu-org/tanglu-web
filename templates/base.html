@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load tanglu_extras %}
+{% load feed_reader %}
 
 {% get_available_languages as languages %}
 
@@ -113,7 +113,7 @@
         <div class="boxgroup section">
             <div class="container">
                 <div class="row-fluid">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         {% block boxgroup_box_left %}
                         {% feed "http://planet.tanglu.org/rss20.xml" as feedData %}
                         <h2>{{ feedData.title }}</h2>
@@ -129,6 +129,7 @@
                         {% endblock boxgroup_box_left %}
                     </div>
 
+                    {% comment %}
                     <div class="col-lg-4">
                         {% block boxgroup_box_center %}
                         <h2>Latest News</h2>
@@ -141,17 +142,21 @@
                         </ul>
                         {% endblock boxgroup_box_center %}
                     </div>
+                    {% endcomment %}
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         {% block boxgroup_box_right %}
-                        <h2>Planet Feed</h2>
-                        <ul>
-                            <li><a href="#">This could be a link or a text block</a></li>
-                            <li><a href="#">This could be a link or a text block</a></li>
-                            <li><a href="#">This could be a link or a text block</a></li>
-                            <li><a href="#">This could be a link or a text block</a></li>
-                            <li><a href="#">This could be a link or a text block</a></li>
-                        </ul>
+                        {% feed "http://packages.tanglu.org/aequorea/newpkg?format=rss" as feedData %}
+                        <h2>{{ feedData.title }}</h2>
+                        {% if feedData.hasEntries %}
+                            <ul>
+                                {% for entry in feedData.entries %}
+                                    <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            The feed was empty.
+                        {% endif %}
                         {% endblock boxgroup_box_right %}
                     </div>
                 </div>
