@@ -59,8 +59,6 @@ def feed(feedLocation):
                 if maxEntries == 0:
                     break
 
-                print entry
-
                 feed.entries.append({
                     'title': entry.title,
                     'link': entry.link,
