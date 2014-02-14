@@ -22,12 +22,12 @@ urlpatterns = patterns('',
 
 # Translatable pages
 urlpatterns += i18n_patterns('',
-    url(r'^$', 'tanglu.views.index', name='index'),
-    url(r'^download/$', 'tanglu.views.download', name='download'),
-    url(r'^contribute/$', 'tanglu.views.contribute', name='contribute'),
-    url(r'^faq/$', 'tanglu.views.faq', name='faq'),
-    url(r'^news/', include('cms.urls')),
+#     url(r'^$', 'tanglu.views.index', name='index'),
+#     url(r'^download/$', 'tanglu.views.download', name='download'),
+#     url(r'^contribute/$', 'tanglu.views.contribute', name='contribute'),
+#     url(r'^faq/$', 'tanglu.views.faq', name='faq'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('cms.urls')),
 )
 
 # Added to make static files work in dev environment

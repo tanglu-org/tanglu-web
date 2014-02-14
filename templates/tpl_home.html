@@ -1,0 +1,199 @@
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% load menu_tags %}
+{% load i18n %}
+{% load feed_reader %}
+
+{% get_available_languages as languages %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block site_title %}
+        <title>Tanglu - {% trans "Made for You" %}</title>
+        {% endblock site_title %}
+        {% render_block "css" %}
+        {% addtoblock "css" %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css"/>
+        <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/png"/>
+        {% endaddtoblock %}
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"
+                            data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="{{ STATIC_URL }}img/tanglu-logo.png"/> Tanglu
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    {% block top_menu %}
+                        <ul class="nav navbar-nav navbar-right">
+                            {# TODO: load custom menu template from templates/menu.html #}
+                            {% show_menu %}
+                        </ul>
+                    {% comment %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="{% url 'index' %}">{% trans "Home" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="{% url 'download' %}">{% trans "Get it" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="{% url 'contribute' %}">{% trans "Contribute" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="{% url 'faq' %}">{% trans "FAQ" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="http://packages.tanglu.org">{% trans "Packages" %}</a>
+                        </li>
+                        <li>
+                            {# Translators: Menu item title #}
+                            <a href="http://planet.tanglu.org">{% trans "Planet" %}</a>
+                        </li>
+                        <li>
+                            <a href="http://wiki.tanglu.org">Wiki</a>
+                        </li>
+                        <li class="dropdown">
+                            <!--<a href="#">{% trans "Languages" %} &#x25BE;</a>-->
+                            {# Translators: Menu item title #}
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                               href="#">
+                                {#{% trans "Languages" %}#}
+                                <span class="glyphicon glyphicon-flag"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for lang_code, lang_name in languages %}
+                                    {% language lang_code %}
+                                        <li>
+                                            <a href="{% url 'index' %}">{{ lang_name }}</a>
+                                        </li>
+                                    {% endlanguage %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                    {% endcomment %}
+                    {% endblock top_menu %}
+                </div><!-- /.navbar-collapse -->
+          </div><!-- /.container -->
+        </nav>
+
+        {% block banner %}
+        <header class="section">
+            <!-- Displays the banner as background image -->
+        </header>
+        {% endblock %}
+
+        <div id="main-content" class="section">
+            <div class="container">
+                {% block main_content %}
+                    {% placeholder tpl_home_content %}
+                {% endblock main_content %}
+            </div> <!-- container -->
+        </div> <!-- middle-content -->
+
+        {% block boxgroup %}
+        <div class="boxgroup section">
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="col-lg-6">
+                        {% block boxgroup_box_left %}
+                        {% feed "http://planet.tanglu.org/rss20.xml" as feedData %}
+                        <h2>{{ feedData.title }}</h2>
+                        {% if feedData.hasEntries %}
+                            <ul>
+                                {% for entry in feedData.entries %}
+                                    <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            The feed was empty.
+                        {% endif %}
+                        {% endblock boxgroup_box_left %}
+                    </div>
+
+                    {% comment %}
+                    <div class="col-lg-4">
+                        {% block boxgroup_box_center %}
+                        <h2>Latest News</h2>
+                        <ul>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                            <li><a href="#">This could be a link or a text block</a></li>
+                        </ul>
+                        {% endblock boxgroup_box_center %}
+                    </div>
+                    {% endcomment %}
+
+                    <div class="col-lg-6">
+                        {% block boxgroup_box_right %}
+                        {% feed "http://packages.tanglu.org/aequorea/newpkg?format=rss" as feedData %}
+                        <h2>{{ feedData.title }}</h2>
+                        {% if feedData.hasEntries %}
+                            <ul>
+                                {% for entry in feedData.entries %}
+                                    <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            The feed was empty.
+                        {% endif %}
+                        {% endblock boxgroup_box_right %}
+                    </div>
+                </div>
+            </div> <!-- container -->
+        </div> <!-- sponsors -->
+        {% endblock boxgroup %}
+
+        <footer class="section">
+            <div class="container">
+                <div class="row-fluid">
+                    {% block footer %}
+                    <div class="col-lg-6">
+                        &copy; 2013 The Tanglu Contributors
+                        <img src="{{ STATIC_URL }}img/tanglu-logo-gray-60px.png"/>
+                    </div>
+
+                    <div class="col-lg-6 text-right">
+                        <a href="http://debian.org">
+                            <img src="{{ STATIC_URL }}img/debian-swirl.png"/>
+                        </a>
+                        Powered by Debian GNU/Linux
+                    </div>
+                    {% endblock footer %}
+                </div>
+            </div> <!-- container -->
+        </footer>
+
+        <!-- Javascript files -->
+        {% render_block "js" %}
+        {% addtoblock "js" %}
+        <script src="{{ STATIC_URL }}js/jquery-2.0.3.min.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+        {% endaddtoblock %}
+    </body>
+</html>
