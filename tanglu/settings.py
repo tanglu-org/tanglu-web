@@ -208,7 +208,6 @@ LOGGING = {
 }
 
 CMS_TEMPLATES = (
-    ('tpl_page_banner.html', 'Page Template with Banner'),
-    ('tpl_page.html', 'Page Template'),
-    ('blog/tpl_blog.html', 'Blog Template'),
+    ('page_with_banner.html', 'Page Template with Banner'),
+    ('page.html', 'Page Template'),
 )

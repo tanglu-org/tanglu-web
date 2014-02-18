@@ -63,7 +63,7 @@ h1, h2, h3, h4 {
     font-family: "cantarell", Helvetica, Arial, Sans;
 }
 
-header {
+.banner {
     height: 400px;
     background: url(../img/banner-bg.png);
     background-color: #174847;
