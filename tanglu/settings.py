@@ -165,13 +165,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tanglu',
+    'djangocms_text_ckeditor',
     'cms',
     'mptt',
     'menus',
     'south',
     'sekizai',
     'reversion',
-    'cms.plugins.text',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -208,6 +208,7 @@ LOGGING = {
 }
 
 CMS_TEMPLATES = (
-    ('tpl_home.html', 'HomePage Template'),
-    ('tpl_blog.html', 'Blog Template'),
+    ('tpl_page_banner.html', 'Page Template with Banner'),
+    ('tpl_page.html', 'Page Template'),
+    ('blog/tpl_blog.html', 'Blog Template'),
 )
