@@ -1,3 +1,6 @@
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% load menu_tags %}
 {% load i18n %}
 {% load feed_reader %}
 
@@ -10,9 +13,12 @@
         {% block site_title %}
         <title>Tanglu - {% trans "Made for You" %}</title>
         {% endblock site_title %}
+        {% render_block "css" %}
+        {% addtoblock "css" %}
         <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css"/>
         <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css"/>
         <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/png"/>
+        {% endaddtoblock %}
     </head>
 
     <body>
@@ -27,7 +33,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="/">
                         <img src="{{ STATIC_URL }}img/tanglu-logo.png"/> Tanglu
                     </a>
                 </div>
@@ -35,80 +41,43 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     {% block top_menu %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            {# Translators: Menu item title #}
-                            <a href="{% url 'index' %}">{% trans "Home" %}</a>
-                        </li>
-                        <li>
-                            {# Translators: Menu item title #}
-                            <a href="{% url 'download' %}">{% trans "Get it" %}</a>
-                        </li>
-                        <li>
-                            {# Translators: Menu item title #}
-                            <a href="{% url 'contribute' %}">{% trans "Contribute" %}</a>
-                        </li>
-                        <li>
-                            {# Translators: Menu item title #}
-                            <a href="{% url 'faq' %}">{% trans "FAQ" %}</a>
-                        </li>
-                        <li>
-                            {# Translators: Menu item title #}
-                            <a href="http://packages.tanglu.org">{% trans "Packages" %}</a>
-                        </li>
-                        <li>
-                            {# Translators: Menu item title #}
-                            <a href="http://planet.tanglu.org">{% trans "Planet" %}</a>
-                        </li>
-                        <li>
-                            <a href="http://wiki.tanglu.org">Wiki</a>
-                        </li>
-                        <li class="dropdown">
-                            <!--<a href="#">{% trans "Languages" %} &#x25BE;</a>-->
-                            {# Translators: Menu item title #}
-                            <a class="dropdown-toggle" data-toggle="dropdown"
-                               href="#">
-                                {#{% trans "Languages" %}#}
-                                <span class="glyphicon glyphicon-flag"></span>
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                {% for lang_code, lang_name in languages %}
-                                    {% language lang_code %}
-                                        <li>
-                                            <a href="{% url 'index' %}">{{ lang_name }}</a>
-                                        </li>
-                                    {% endlanguage %}
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            {% show_menu %}
+                            {# {% language_chooser %} #}
+                            <li class="dropdown">
+                                <!--<a href="#">{% trans "Languages" %} &#x25BE;</a>-->
+                                {# Translators: Menu item title #}
+                                <a class="dropdown-toggle" data-toggle="dropdown"
+                                   href="#">
+                                    {#{% trans "Languages" %}#}
+                                    <span class="glyphicon glyphicon-flag"></span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for lang_code, lang_name in languages %}
+                                        {% language lang_code %}
+                                            <li>
+                                                <a href="/">{{ lang_name }}</a>
+                                            </li>
+                                        {% endlanguage %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
                     {% endblock top_menu %}
                 </div><!-- /.navbar-collapse -->
           </div><!-- /.container -->
         </nav>
 
+        {% block banner %}
         <header class="section">
             <!-- Displays the banner as background image -->
         </header>
+        {% endblock %}
 
         <div id="main-content" class="section">
             <div class="container">
                 {% block main_content %}
-                <h2>{% trans "Welcome to the Tanglu website" %}</h2>
-                <p>{% trans "A new GNU/Linux distribution based on Debian, designed for human beings." %}</p>
-                <p>
-                    {# Translators: %(name)s are variables. Do not translate. #}
-                    {% blocktrans with link_1="<a href='http://blog.tenstral.net/2013/03/tanglu.html'>" link_2="</a>" %}Read the {{ link_1 }} initial announcement {{ link_2 }}.{% endblocktrans %}
-                </p>
-                <p>
-                    {# Translators: %(name)s are variables. Do not translate. #}
-                    {% blocktrans with users_channel="<a href='http://webchat.freenode.net/?channels=tanglu'>#tanglu</a>" devs_channel="<a href='http://webchat.freenode.net/?channels=tanglu-devel'>#tanglu-devel</a>" %}If you want to get in contact, check out ther user's channel {{ users_channel }} on Freenode (discussion about Tanglu development is happening at {{ devs_channel }}).{% endblocktrans %}
-                </p>
-                <p>
-                    {# Translators: %(name)s are variables. Do not translate. #}
-                    {% blocktrans with link_1="<a href='http://lists.tanglu.org/mailman/listinfo'>" link_2="</a>" %}You can also subscribe to one of our {{ link_1 }} mailinglists {{ link_2 }}, bigger announcements will be posted to the low-volume tanglu-announce mailinglist.{% endblocktrans %}
-                </p>
                 {% endblock main_content %}
             </div> <!-- container -->
         </div> <!-- middle-content -->
@@ -189,7 +158,10 @@
         </footer>
 
         <!-- Javascript files -->
+        {% render_block "js" %}
+        {% addtoblock "js" %}
         <script src="{{ STATIC_URL }}js/jquery-2.0.3.min.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+        {% endaddtoblock %}
     </body>
 </html>
