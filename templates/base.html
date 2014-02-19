@@ -2,6 +2,7 @@
 {% load sekizai_tags %}
 {% load menu_tags %}
 {% load i18n %}
+{% load cache %}
 {% load feed_reader %}
 
 <html lang="en">
@@ -77,17 +78,19 @@
                 <div class="row-fluid">
                     <div class="col-lg-6">
                         {% block boxgroup_box_left %}
-                        {% feed "http://planet.tanglu.org/rss20.xml" as feedData %}
-                        <h2>{{ feedData.title }}</h2>
-                        {% if feedData.hasEntries %}
-                            <ul>
-                                {% for entry in feedData.entries %}
-                                    <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        {% else %}
-                            The feed was empty.
-                        {% endif %}
+                        {% cache 500 planet_feed %}
+                            {% feed "http://planet.tanglu.org/rss20.xml" as feedData %}
+                            <h2>{{ feedData.title }}</h2>
+                            {% if feedData.hasEntries %}
+                                <ul>
+                                    {% for entry in feedData.entries %}
+                                        <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                The feed was empty.
+                            {% endif %}
+                        {% endcache %}
                         {% endblock boxgroup_box_left %}
                     </div>
 
@@ -108,17 +111,19 @@
 
                     <div class="col-lg-6">
                         {% block boxgroup_box_right %}
-                        {% feed "http://packages.tanglu.org/aequorea/newpkg?format=rss" as feedData %}
-                        <h2>{{ feedData.title }}</h2>
-                        {% if feedData.hasEntries %}
-                            <ul>
-                                {% for entry in feedData.entries %}
-                                    <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        {% else %}
-                            The feed was empty.
-                        {% endif %}
+                        {% cache 500 packages_feed %}
+                            {% feed "http://packages.tanglu.org/aequorea/newpkg?format=rss" as feedData %}
+                            <h2>{{ feedData.title }}</h2>
+                            {% if feedData.hasEntries %}
+                                <ul>
+                                    {% for entry in feedData.entries %}
+                                        <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                The feed was empty.
+                            {% endif %}
+                        {% endcache %}
                         {% endblock boxgroup_box_right %}
                     </div>
                 </div>
