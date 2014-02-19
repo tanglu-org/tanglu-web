@@ -211,3 +211,10 @@ CMS_TEMPLATES = (
     ('page_with_banner.html', 'Page Template with Banner'),
     ('page.html', 'Page Template'),
 )
+
+CMS_LANGUAGES = {
+    'default': {
+        'fallbacks': ['en'],
+        'hide_untranslated': False,
+    }
+}
