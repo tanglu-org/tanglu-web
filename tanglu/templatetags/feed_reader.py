@@ -30,7 +30,7 @@ def feed(feedLocation):
     feed = Feed()
 
     # Check the HTTP status. If not 200, return a default Feed object
-    if feedData.status != 200:
+    if not hasattr(feedData, 'status') and feedData.status != 200:
         return Feed()
 
     try:
