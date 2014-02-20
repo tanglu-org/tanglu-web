@@ -10,7 +10,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block site_title %}
-        <title>Tanglu - {% trans "Made for You" %}</title>
+        <title>Tanglu - {% page_attribute "page_title" %}</title>
         {% endblock site_title %}
         {% render_block "css" %}
         {% addtoblock "css" %}
