@@ -80,6 +80,10 @@ h1, h2, h3, h4 {
     padding: 50px 0px;
 }
 
+.selected {
+    background-color: #eee;
+}
+
 .navbar {
     background-color: #fff;
     background-image: none;
