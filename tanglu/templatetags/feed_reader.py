@@ -14,6 +14,7 @@ safewrap.is_safe = True
 # Feed Parser template tag
 class Feed:
     "Class that stores rss feed's informations"
+    status = 404
     title = "No Title Set"
     link = "#"
     hasEntries = False
@@ -30,8 +31,8 @@ def feed(feedLocation):
     feed = Feed()
 
     # Check the HTTP status. If not 200, return a default Feed object
-    if not hasattr(feedData, 'status') and feedData.status != 200:
-        return Feed()
+    if not hasattr(feedData, 'status') or feedData.status != 200:
+        return feed
 
     try:
         # Set feed title and link attributes
