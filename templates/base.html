@@ -112,7 +112,7 @@
                     <div class="col-lg-6">
                         {% block boxgroup_box_right %}
                         {% cache 500 packages_feed %}
-                            {% feed "http://packages.tanglu.org/aequorea/newpkg?format=rss" as feedData %}
+                            {% feed "http://packages.tanglu.org/de/bartholomea/newpkg?format=rss" as feedData %}
                             <h2>{{ feedData.title }}</h2>
                             {% if feedData.hasEntries %}
                                 <ul>
