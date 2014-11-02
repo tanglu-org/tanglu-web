@@ -96,8 +96,9 @@ h1, h2, h3, h4 {
     padding: 3px 0px;
 }
 
-.navbar-brand img {
-    width: 55px;
+.navbar-brand > img {
+    display: inline;
+    width: 56px;
 }
 
 .navbar-nav > li.active {
