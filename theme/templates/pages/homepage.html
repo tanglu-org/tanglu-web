@@ -1,0 +1,39 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags static blog_tags %}
+
+{% block meta_title %}Home{% endblock %}
+
+{% block banner %}
+  <header class="section banner">
+    <!-- Displays the banner as background image -->
+  </header>
+{% endblock %}
+
+{% block main %}
+
+<h1>Welcome to the Tanglu website!</h1>
+
+<p>
+  Tanglu is a modern GNU/Linux distribution based on Debian, designed for the desktops of today, developed in the open
+  on a modern development platform. While Tanglu is based on Debian, we explore new ways of building a distribution,
+  giving developers and users the best experience possible. The Tanglu project is vendor-independent and has a social policy
+  similar to Debian.
+</p>
+
+<p>
+  We recently released Tanglu 1.0 (Aequorea Victoria)!
+  You can read the <a href="http://lists.tanglu.org/pipermail/tanglu-announce/2014-February/000021.html">release announcement</a>.
+</p>
+
+<p>
+  If you want to get in contact, check out ther user's channel <a href="http://webchat.freenode.net/?channels=tanglu">#tanglu</a>
+  on Freenode (discussion about Tanglu development is happening at <a href="http://webchat.freenode.net/?channels=tanglu-devel">#tanglu-devel</a>).
+</p>
+
+<p>
+  You can also subscribe to one of our <a href="http://lists.tanglu.org/mailman/listinfo">mailinglists</a>,
+  bigger announcements will be posted to the low-volume tanglu-announce mailinglist.
+</p>
+
+{% endblock %}
