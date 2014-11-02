@@ -114,8 +114,12 @@ LANGUAGE_CODE = "en"
 
 # Supported languages
 _ = lambda s: s
+
 LANGUAGES = (
-    ('en', _('English')),
+    ('en', 'English'),
+    ('de', 'German'),
+    ('es', 'Spanish'),
+    ('pt-br', 'Brazilian Portuguese'),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
