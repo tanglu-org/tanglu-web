@@ -122,6 +122,8 @@ LANGUAGES = (
     ('pt-br', 'Brazilian Portuguese'),
 )
 
+USE_I18N = True
+
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
@@ -313,6 +315,9 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
+
+# we want the year encoded in the blog url
+BLOG_URLS_DATE_FORMAT = "month"
 
 ###################
 # DEPLOY SETTINGS #
