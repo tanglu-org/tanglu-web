@@ -124,6 +124,8 @@ LANGUAGES = (
 
 USE_I18N = True
 
+USE_MODELTRANSLATION = True
+
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
@@ -251,8 +253,8 @@ INSTALLED_APPS = (
     "mezzanine.core",
     "mezzanine.generic",
     "mezzanine.blog",
-    "mezzanine.forms",
     "mezzanine.pages",
+    "mezzanine.forms",
     "mezzanine.galleries",
     "mezzanine.twitter",
     # "mezzanine.accounts",
